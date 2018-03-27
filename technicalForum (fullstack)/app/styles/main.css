@@ -1,0 +1,13 @@
+
+/*Style applied for public-post template*/
+
+.stylePostUname{
+    background-color: darkgoldenrod;
+    text-transform: capitalize;
+}
+.stylePostTitle{
+    background-color: antiquewhite;
+    font-family: Monotype Corsiva; 
+    font-size: large;
+    font-weight: bold;
+}

@@ -1,0 +1,57 @@
+<div class="container pull-left">
+    <div class="row-md-10">
+        <div class="col-md-10">
+            <h3>My Posts</h3>
+            <table class="container table borderless table-striped pull-left" ng-if="vm.posts.length">
+                <tr class="row-md-10 table-bordered" ng-repeat="post in vm.posts track by $index">
+
+                    <td class="col-md-3 stylePostTitle"> {{post.Title}} </td>
+                    <td class="col-md-5"> {{post.Post}} </td>
+                    <td class="col-md-2">
+                        <button type="button" data-ng-hide="vm.showHide()" ng-click="vm.doUpdate( $index, post.Name,post.Post, post)" data-toggle="modal"
+                            data-target="#editPost">Update</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="modal fade" id="editPost" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">Exit</button>
+            </div>
+            <div class="modal-body">
+
+                <!--creating textarea-->
+                <div class="form-group">
+
+                    <label for="textarea">
+                        <textarea ng-model="vm.updatePostMsg" class="form-controls" placeholder="Enter your post here..." rows="5" cols="50"></textarea>
+                        <br/>
+                        <button id="submitBtn" ng-click="vm.updatePost()" data-dismiss="modal">Submit</button>
+                    </label>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--If post length is zero, show below message-->
+
+<div class="container" id="welcomeMsg">
+    <h4 ng-if="vm.posts.length === 0">
+        Woha ! Seems you have not created any post.
+        <br/>
+        <br/> Click on
+        <b>"MY Post"</b> to create your own post or click </br>
+        <br/> on
+        <b>"Public Post"</b> to see other's Post. :)
+    </h4>
+</div>

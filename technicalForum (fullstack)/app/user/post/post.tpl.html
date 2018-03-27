@@ -1,0 +1,54 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+
+<div class="fluid panel panel-primary navbar-fixed">
+    <div class="row" id="titleBar">
+        <div class="col-lg-11">
+            <h4>Welcome, {{proCtrl.username.slice(0,5)}} !</h4>
+        </div>
+        <div class="col-lg-1">
+            <button class="btn btn-danger" type="button" ng-click="proCtrl.logout()">SignOut</button>
+        </div>
+    </div>
+</div>
+
+
+<!--creating tabs-->
+<div class="fluid pull-right">
+    <ul class="nav nav-tabs bg-warning">
+        <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#postModal">Create Post</button>
+        <li> <a ui-sref="mypost" ui-sref-active="active"> MY POST</a></li>
+        <li><a ui-sref="publicpost" ui-sref-active="active"> Public POST</a></li> 
+    </ul>
+</div>
+
+
+<br/>
+<br/>
+<div class="pull left modal fade" id="postModal" role="dialog">
+
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" name="exitPost" class="close" data-dismiss="modal">X</button>
+            </div>
+            <div class="modal-body">
+                <form name="updatePostForm" ng-model="proCtrl.updateForm">
+                    <!--creating textarea-->
+                    <div class="form-group">
+                        <input type="text" ng-model="proCtrl.postTitle" name="postTitle" maxlength="50" placeholder="Post title (max 50 char)" />
+                        <label for="textarea">
+                            <textarea ng-model="proCtrl.mainPost" class="form-controls" maxlength="256" placeholder="Enter your post here..." rows="5"
+                                cols="50"></textarea>
+                            <br/>
+                            <button id="submitBtn" ng-click="proCtrl.submitPost(proCtrl.username, proCtrl.mainPost, proCtrl.postTitle)" data-dismiss="modal">Post</button>
+                        </label>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div ui-view></div>

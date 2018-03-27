@@ -1,0 +1,41 @@
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+
+<div class="fluid back">
+	<div class="div-center">
+		<div class="content">
+			<small class="help-block" ng-show="errMsg">{{errMessage}}</small>
+
+			<form name="myForm" id="loginForm">
+				<!--Email Id field-->
+				<div class="form-group" ng-class="{'has-error': 'myForm.email.$touched && myForm.email.$invalid'}">
+					<label for="email">
+						<h3>E-mail:</h3>
+						<input class="form-control" type="email" name="email" ng-model="signinCtrl.usrMail" placeholder="xyz@gmail.com" required
+						/>
+					</label> <br/>
+					<small class="help-block" ng-show="myForm.email.$touched && myForm.email.$invalid">Enter valid Email address</small>
+				</div>
+
+				<!--Password field-->
+				<div class="form-group" ng-class="{'has-error': 'myForm.pwd.$touched && myForm.pwd.$invalid'}">
+					<label for="password">
+						<h3>Password:</h3>
+						<input class="form-control" type="password" name="pwd" ng-model="signinCtrl.usrPwd" placeholder="password" maxlength=8 required
+						/>
+					</label> <br/>
+					<small class="help-block" ng-show="myForm.pwd.$touched && myForm.pwd.$invalid">Enter valid password</small>
+				</div>
+
+				<!--Button group-->
+				<div>
+					<label for="signin">
+						<input class="btn btn-block btn-success" type="button" ng-click="signinCtrl.authenticate()" value="SignIn" /> </label>
+					<label for="reset">
+						<input class="btn btn-block btn-warning " type="reset" ng-click="reset()" value="Reset" /> </label>
+				</div>
+
+			</form>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,26 @@
+<div class="container pull-left">
+	<div class="row-md-11">
+		<div class="col-md-11">
+			<h3>Public Posts</h3>
+			<table class="container table borderless table-striped pull-left" ng-repeat="userPosts in vm.pubPosts track by $index">
+				<tr class="row-md-11 table-bordered" ng-hide="post.Name==vm.uname" ng-repeat="post in userPosts track by $index">
+
+					<td class="col-md-1"> {{post.Name | uppercase}} </td>
+					<td class="col-md-3 stylePostTitle"> {{post.Title}} </td>
+					<td class="col-md-5"> {{post.Post}} </td>
+					<td class="col-md-2">
+						<button type="button" ng-model="vm.likeBtn" name="LikeBtn" ng-click="vm.doUpdate($index, post.Name, 'likes')">
+							<span class="glyphicon glyphicon-thumbs-up"></span>
+						</button>
+						<span ng-model="vm.like" ng-bind="post.likes"></span>
+						<button type="button" ng-model="vm.dislikeBtn" name="DislikeBtn" ng-click="vm.doUpdate($index, post.Name, 'dislikes')">
+							<span class="glyphicon glyphicon-thumbs-down"></span>
+						</button>
+						<span ng-model="vm.dislike" ng-bind="post.dislikes"></span>
+					</td>
+
+				</tr>
+			</table>
+		</div>
+	</div>
+</div>
