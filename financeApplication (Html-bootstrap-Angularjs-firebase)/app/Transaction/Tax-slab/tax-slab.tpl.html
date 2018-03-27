@@ -1,0 +1,18 @@
+<h4>Tax Slab View Page</h4>
+
+<table class="container table borderless table-striped pull-left">
+       <tr id="tableHeader">
+         <th>Payee Role</th>
+         <th>Role Id</th>
+         <th>Tax Slab</th>
+         <th>Action</th>
+       </tr>
+        <tr ng-repeat="payeeRole in taxSlabCtrl.roles" >
+          <td>{{payeeRole.role_name | uppercase}} </td>
+          <td>{{payeeRole.role_id}} </td>
+          <td> <input type="number" name="taxSlab"  ng-model="payeeRole.tax_slab" /> </td> 
+          <td> <button type="button" ng-model="taxSlabCtrl.updateTax" ng-click="taxSlabCtrl.updateTax(payeeRole.role_id,payeeRole.tax_slab)"> Update Tax </button></td>        
+        </tr>
+        
+</table>
+

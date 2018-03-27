@@ -1,0 +1,24 @@
+#loginBgImage {
+  background-image: url(../images/finApp.png);
+  background-repeat: no-repeat;
+}
+
+.pageTitle{
+  background-color: black;
+}
+.pageTitle h3{
+  color: white;
+  background-position-x: 35%;
+  
+}
+#loginForm {
+  position: relative;
+  border: 0;
+  box-shadow: 0 0 0;
+  border-radius: 0;
+  background: transparent;
+  color: #555555;
+  padding: 7px 0;
+  font-weight: bold;
+  height:auto;
+}

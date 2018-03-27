@@ -1,0 +1,32 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+
+<div class="pull-left"> <h4>Transaction History:</h4> </div> 
+
+<!--Generating pdf file for Transaction history-->
+<div class="pull-right">
+    <button pdf-save-button="txnHistory" pdf-name="statement.pdf" class="btn">
+        <span class="glyphicon glyphicon-download-alt"></span>
+    </button>    
+</div>
+
+
+<!--Transaction History-->
+<div pdf-save-content="txnHistory">
+<table class="container table borderless table-striped">
+    <tr class="row-md-12" id="tableHeader">
+        <th class="col-md-3">Txn. Date (mm/dd/yyyy)</th>
+        <th class="col-md-3">Payee Name</th>
+        <th class="col-md-2">Gross Amount</th>
+        <th class="col-md-2">Tax</th>
+        <th class="col-md-2">Net Amount</th>
+    </tr>
+    <tr class="row-md-12" ng-model="paymentHistCtrl.showPaymentHist" ng-repeat="paymentHist in paymentHistCtrl.paymentHistory | orderBy:'-PaymentDate' " 
+        value="{{paymentHist.id}}">
+        <td class="col-md-3">{{paymentHist.PaymentDate}} </td>
+        <td class="col-md-3">{{paymentHist.payeeName}} </td>
+        <td class="col-md-2">{{paymentHist.grossAmount | currency:'&#8377; '}}</td>
+        <td class="col-md-2">{{paymentHist.taxComputation | currency:'&#8377; '}}</td>
+        <td class="col-md-2">{{paymentHist.netAmount | currency:'&#8377; ' }}</td>
+    </tr>
+</table>
+</div>

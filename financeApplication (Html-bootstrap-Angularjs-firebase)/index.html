@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- CSS files -->
+  <link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" type="text/css" href="https://www.w3schools.com/w3css/4/w3.css" />
+  <!--Custom CSS files-->
+  <link rel="stylesheet" type="text/css" href="app/styles/login.css" />
+  <link rel="stylesheet" type="text/css" href="app/styles/payment.css" />
+
+  <title>Finance Application</title>
+
+</head>
+
+<body ng-app="myApp">
+
+  <!--viewport for the Login Page-->
+  <div class="container">
+    <div ui-view> </div>
+  </div>
+
+
+
+  <!-- scripts -->
+  <!-- node modules -->
+  <script src="node_modules/jquery/dist/jquery.min.js"></script>
+  <script src="node_modules/angular/angular.min.js"></script>
+  <script src="node_modules/angular-ui-router/release/angular-ui-router.min.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.11.2/ui-bootstrap-tpls.min.js"></script>
+  <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+  
+  <!--For generatign PDF-->
+  <script src="https://cdn.rawgit.com/niklasvh/html2canvas/0.5.0-alpha2/dist/html2canvas.min.js"></script>
+  <script src="app/script/jspdf.debug.js"></script>
+  <script src="node_modules/angular-save-html-to-pdf/dist/saveHtmlToPdf.min.js"></script>
+
+  <!--Firebase script-->
+  <script src="node_modules/firebase/firebase.js"></script>
+  <script src="node_modules/firebase/firebase-firestore.js"></script>
+  <script src="app/script/firebase-service.js"></script>
+  <script src="node_modules/angularfire/dist/angularfire.min.js"></script>
+
+  <!--Main module-->
+  <script src="app/app.module.js"></script>
+
+  <!-- Login module -->
+  <script src="app/Login/login.module.js"></script>
+  <script src="app/Login/login.route.js"></script>
+  <script src="app/Login/login.controller.js"></script>
+  <script src="app/Login/login.service.js"></script>
+
+  <!-- Payment Module -->
+  <script src="app/Transaction/Payment/payment.module.js"></script>
+  <script src="app/Transaction/Payment/payment.route.js"></script>
+  <script src="app/Transaction/Payment/payment.controller.js"></script>
+  <!-- <script src="app/Transaction/Payment/payment.service.js"></script> -->
+
+  <script src="app/Transaction/Payment-history/payment-history.controller.js"></script>
+  <script src="app/Transaction/Tax-slab/tax-slab.controller.js"></script>
+
+
+</body>
+
+</html>

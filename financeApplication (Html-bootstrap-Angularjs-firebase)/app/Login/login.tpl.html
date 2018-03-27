@@ -1,0 +1,34 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+
+<div class="container pageTitle"><h3>Financial Application Portal</h3>  </div>
+<img src="app/images/ces-logo.png" alt="org logo">
+
+<br/><br/><br/><br/><br/>
+<div class="container" id="loginBgImage">
+	<small class="help-block" ng-show="errMsg">{{errMessage}}</small>
+	<form name="loginForm" id="loginForm">
+		<!--Org Email field-->
+		<div class="form-group" ng-class="{'has-error': 'loginForm.orgEmail.$touched && loginForm.orgEmail.$invalid'}">
+			<label for="Organization Mail">
+				<h5><b>Organization Mail</b></h5>
+				<input type="email" class="form-control" name="orgEmail" ng-model="loginCtrl.orgMail" placeholder="org@cesltd.com" />
+				<small class="help-block" ng-show="loginForm.orgEmail.$touched && loginForm.orgEmail.$invalid">Invalid Email</small>
+			</label>
+		</div>
+		<!--Org Password field-->
+		<div class="form-group" ng-class="{'has-error': 'loginForm.orgPassword.$touched && loginForm.orgPassword.$invalid'}">
+			<label for="password">
+				<h5><b>Password</b></h5>
+				<input type="password" class="form-control" name="orgPassword" ng-model="loginCtrl.orgPwd" placeholder="password" />
+				<small class="help-block" ng-show="loginForm.orgPassword.$touched && loginForm.orgPassword.$invalid">Invalid Password</small>
+			</label>
+		</div>
+		<!--Button-->
+		<div class="form-group">
+			<label for="buttons">
+				<input type="button" class="form-control btn btn-success" ng-click="loginCtrl.login()" value="LOGIN" />
+			</label>
+			<input type="reset" class="btn btn-warning" ng-click="reset()" value="RESET" />
+		</div>
+	</form>
+</div>

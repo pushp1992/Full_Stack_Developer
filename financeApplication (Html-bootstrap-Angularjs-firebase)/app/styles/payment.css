@@ -1,0 +1,85 @@
+/* body {
+  background-image: url(../images/finApp2.jpg);
+  background-repeat: no-repeat;
+} */
+
+
+/* .pageHeader {
+  background-color:  slategrey;
+} */
+
+/*uiView div background*/
+#uiView{
+  background-color: bisque;
+}
+
+/*Payment Modal Window*/
+.modal-body{
+  overflow-y: scroll;
+  align-content: center;  
+}
+.modal {
+  text-align: center;
+  padding: 15%;
+  
+}
+
+.modal:before {
+  content: "";
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+  margin-right: -4px;
+}
+
+.modal-dialog {
+  /* border-style: groove;
+  border-color: lightgreen; */
+  border-top-left-radius: 2em;
+  border-top-right-radius: 2em;
+  border-bottom-left-radius: 2em;
+  border-bottom-right-radius: 2em;
+
+  display: inline-flex;
+  text-align: left;
+  vertical-align: middle;
+}
+
+.modal-header {
+  background-color: cornflowerblue;
+}
+
+/*carousel style*/
+#slides_control > div{
+  height: 200px;
+}
+.sliders{
+  margin:2%;
+  width: 700%;
+  height: 500%;
+  border-top-right-radius: 2em;
+  border-top-left-radius: 2em;
+  border-bottom-left-radius: 2em;
+  border-bottom-right-radius: 2em;
+}
+#slides_control {
+  position:absolute;
+  width: 400px;
+  left:50%;
+  top:20px;
+ margin-left:-200px;
+}
+
+/*Footer*/
+.blue{
+  position: absolute;
+  background-color:darkgray;
+}
+p{
+  color: white;
+}
+
+/*Payment history tpl*/
+#tableHeader {
+  background-color: rgb(240, 126, 126);
+}

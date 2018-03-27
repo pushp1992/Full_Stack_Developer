@@ -1,0 +1,165 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+
+<div class="container pageTitle">
+  <div class="row">
+    <div class="col-lg-11">
+      <h3>Welcome To Financial Application.</h3>
+    </div>
+    <div class="col-lg-1">
+      <button class="btn btn-primary" ng-click="paymentCtrl.logout()"> Logout </button>
+    </div>
+  </div>
+</div>
+
+<!--Payment Page Header-->
+<table class="container pageHeader">
+  <tr class="row">
+    <td class="col-lg-11">
+      <h5></h5>
+    </td>
+    <td class="col-lg-1">
+      <a ui-sref="paymentInfo"> <img src="app/images/home.png"/> </a>
+    </td>
+  </tr>
+</table>
+
+<br/> <br/>
+
+<div class="container row-lg-12">
+<!--Creating Different Transaction options using state-->
+<div class="fluid pull-left col-md-3"> 
+    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#initiatePayment">  <h4>Make Payment</h4>  </button> <br/> <br/>
+    <button type="button" class="btn btn-info"> <a ui-sref="paymentHistory"> <h4>Payment History</h4> </a> </button> <br/> <br/>
+    <button type="button" class="btn btn-info"> <a ui-sref="taxSlab"> <h4>Tax Slab Setting</h4> </a> </button> <br/>
+</div>
+
+<div class="fluid pull-right col-lg-9" id="uiView"> 
+      <!--viewport for Tax slab and Payment history-->
+      <div ui-view>      
+        <!--Carousel effect-->
+        <div id="slides_control">
+            <div>
+                <carousel interval="myInterval">
+                  <slide ng-repeat="slide in slides" active="slide.active">
+                    <img ng-src="{{slide.image}}" class="sliders">
+                    <div class="carousel-caption">
+                      <!-- <h4>Slide {{$index+1}}</h4> -->
+                    </div>
+                  </slide>
+                </carousel>
+              </div>          
+        </div> <!--slide control-->      
+      </div> <!--ui-view div-->  
+  </div> <!--right div-->
+  </div> <!--main div-->
+
+
+      <!-- Creating Modal Window for Payment Form -->
+      <div class="modal fade" id="initiatePayment" role="dialog">
+        <div class="modal-dialog" role="document">
+          <!--Modal Content-->
+          <div class="modal-content">
+            <div class="modal-header">
+                <h4>Payment Window</h4>
+                <button type="button" name="exitPost" class="close" data-dismiss="modal">Close</button>
+            </div>
+            <div class="modal-body">
+
+      <!--Payee Detail Form-->
+      <form name="paymentForm">
+
+        <div class="row form-group">
+          <label for="Payee name">
+            <h5>Payee Name</h5>
+            <input type="text" name="payeeName" class="form-control" ng-model="paymentCtrl.payeeName" placeholder="Enter Payee name"
+              required />
+          </label>          
+        </div>
+
+        <div class="row form-group">
+          <label for="Gross Amount">
+            <h5>Gross Amount</h5>
+            INR <input type="number" name="grossAmount" class="form-control" ng-model="paymentCtrl.grossAmount" required />
+          </label>
+        </div>
+
+        <div class="row form-group">
+          <label for="Payee Role">
+            <h5>Payee Role</h5>
+            <select name="roletype" ng-init="paymentCtrl.payeeRole=''" ng-model="paymentCtrl.payeeRole" ng-change="paymentCtrl.calcTaxAndNetAmnt(paymentCtrl.payeeRole)" required>
+              <!-- <option>Select Role</option> -->
+              <option class="form-control"  ng-repeat="payeeRole in paymentCtrl.roles" value="{{payeeRole.role_id}}">
+                {{payeeRole.role_name}}
+              </option>
+            </select>
+          </label>
+        </div>
+
+        <div class="row form-group">
+          <label for="Tax Computation">
+            <h5>Tax on Gross Amount</h5>
+            <small>(contractor: 2%, vendor: 5%)</small>
+            <input type="number" name="taxComputation" class="form-control" ng-model="paymentCtrl.taxComputation" readonly />
+          </label>
+        </div>
+
+        <div class="row form-group">
+          <label for="Net Amount">
+            <h5>Net Amount (
+              <small>Gross Amount + Tax </small>)</h5>
+            <input type="number" name="netAmount" class="form-control" ng-model="paymentCtrl.netAmount" readonly/>
+          </label>
+        </div>
+
+        <div class="row form-group">
+          <label for="comments">
+            <h5>Comments</h5>
+            <textarea name="comments" class="form-control" ng-model="paymentCtrl.comments" row="60px" col="60px" placeholder="Payment remark (optional)">
+            </textarea>
+          </label>
+        </div>
+
+        <div class="row form-group">
+          <label for="Payment button">
+            <input type="button" name="submitButton" class="form-control btn btn-info" value="Make Payment" ng-disabled="paymentForm.$invalid" ng-click="paymentCtrl.makePayment()" data-dismiss="modal"
+            />
+          </label>
+          <label for="reset button">
+            <input type="reset" name="resetFields" class="form-control btn btn-warning" value="Reset" ng-click="reset()" />
+          </label>
+        </div>
+
+      </form>
+
+          </div>
+        </div>
+      </div>
+   </div>
+
+   <br/><br/>
+   <!--Page footer-->
+   <footer class="page-footer blue center-on-small-only">
+    <!--Footer Links-->
+    <div class="container">
+        <div class="row">
+            <!--First column-->
+            <div class="col-md-2"><h5 class="title"><b>About Us</b></h5></div>
+            <div class="col-md-2"><h5 class="title"><b>Finance Help</b></h5></div>
+            <div class="col-md-2"><h5 class="title"><b>IT Return</b></h5></div>
+            <!--Second column-->
+            <div class="col-md-6">
+                 <!--Footer Links-->
+                <!-- <h5 class="title">Links</h5> -->
+            </div>
+        </div>
+    </div> 
+    <!--Copyright-->
+    <div class="footer-copyright">
+        <div class="container">
+          <p> <a href="http://www.cesltd.com/"> CES IT Finance Team </a> <br/> <br/>
+              Copyright © 2018 CES Limited. All rights reserved </p>
+        </div>
+    </div>
+</footer>
+
+
